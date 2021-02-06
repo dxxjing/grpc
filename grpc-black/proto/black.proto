@@ -1,0 +1,37 @@
+//指定proto版本
+syntax = "proto3";
+//指定默认包名
+package black;
+
+option go_package = ".;black";
+
+//定义黑名单服务
+
+service Black {
+    rpc List (ListReq) returns (ListRsp) {}
+    rpc Add (AddReq) returns (AddRsp) {}
+}
+
+message ListReq {
+    string keyword = 1;
+    int32 index = 2;
+    int32 count = 3;
+}
+
+message ListRsp {
+    repeated Info info = 1;
+}
+
+message Info {
+    int64 uid = 1;
+    string name = 2;
+}
+
+message AddReq {
+    Info info = 1;
+}
+
+message AddRsp {
+    int64 Id = 1;
+}
+

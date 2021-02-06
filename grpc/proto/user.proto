@@ -1,0 +1,26 @@
+syntax = "proto3";
+//
+option go_package = "../pb;pb";
+//生成文件 protoc --go_out=plugins=grpc:. user.proto
+//gRPC插件会为服务端和客户端生成不同的接口：
+//type UserServiceClient interface {
+//	GetUserInfo(ctx context.Context, in *GetUserInfoReq, opts ...grpc.CallOption) (*GetUserInfoRsp, error)
+//}
+//type UserServiceServer interface {
+//	GetUserInfo(context.Context, *GetUserInfoReq) (*GetUserInfoRsp, error)
+//}
+
+//注意 服务名首字母必须大写 否则不可导出
+service UserService {
+    rpc getUserInfo (getUserInfoReq) returns (getUserInfoRsp);
+}
+
+message getUserInfoReq {
+    int64 id = 1;
+}
+
+message getUserInfoRsp {
+    int64 id = 1;
+    string name = 2;
+    string addr = 3;
+}

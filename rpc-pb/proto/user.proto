@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option go_package = "../pb;pb";
+//protoc --go_out . user.proto
+
+message getUserInfoReq {
+    int64 id = 1;
+}
+
+message getUserInfoRsp {
+    int64 id = 1;
+    string name = 2;
+    string addr = 3;
+}

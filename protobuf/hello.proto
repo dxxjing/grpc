@@ -1,0 +1,16 @@
+syntax = "proto3";
+//安装protoc   brew install protobuf
+
+//提示找不到 protoc-gen-go 解决办法:
+//go get github.com/golang/protobuf
+//cp ~/go/bin/protoc-gen-go /usr/local/bin/
+
+//指定生成pb文件包名 若不指定会有警告,本例指定报名为test
+//也可以指定目录名 和报名  "pb;test" 表示在./pb 目录下生成文件
+option go_package = ".;test";
+
+package Hello;
+
+message String {
+    string value = 1;
+}
